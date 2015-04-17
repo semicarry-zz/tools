@@ -1,7 +1,7 @@
 Tools
 =====
 
-## Email notify for emacs on mac ##
+## Email notify for procmail on mac ##
 Use procmail+**THIS TOOL**+growlnotify to get email notified on mac.
 
 ### Install growl & growlnotify ###
