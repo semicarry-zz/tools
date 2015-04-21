@@ -5,13 +5,11 @@ import (
 	"bytes"
 	"code.google.com/p/go.text/encoding/simplifiedchinese"
 	"code.google.com/p/go.text/transform"
-	"crypto/md5"
 	"encoding/base64"
 	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 	"regexp"
 	"strconv"
@@ -143,6 +141,17 @@ func main() {
 					fmt.Println(str)
 				}
 			}
+			reg = regexp.MustCompile(`filename[= ](.*)`)
+			if reg.MatchString(line) {
+				matched := reg.FindAllStringSubmatch(line, 1)[0][1]
+				str, err := decodeRFC2047Word(matched)
+				if err != nil {
+					fmt.Println(matched)
+				} else {
+					fmt.Println(str)
+				}
+			}
+
 		}
 	}
 }
